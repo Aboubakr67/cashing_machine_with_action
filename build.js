@@ -39,8 +39,8 @@ async function build() {
     console.log("📄 Copying package.json...");
     const pkg = await fs.readJson("package.json");
     // Supprimer les devDependencies pour la production
-    delete pkg.devDependencies;
-    delete pkg.scripts;
+    // delete pkg.devDependencies;
+    // delete pkg.scripts;
     await fs.writeJson("dist/package.json", pkg, { spaces: 2 });
 
     console.log("✅ Build completed successfully!");
