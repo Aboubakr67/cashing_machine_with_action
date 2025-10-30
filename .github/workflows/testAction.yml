@@ -1,0 +1,41 @@
+name: Unit Test & Functional Test & E2E Test
+
+on:
+  push: ~
+  pull_request: ~
+  workflow_dispatch: ~
+
+jobs:
+  unit-tests:
+    name: unit tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14, 16, 20, 22]
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.sha}}
+
+      - name: Cache des dépendances Node
+        uses: actions/cache@v4
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: install node modules
+        id: installNodeModules
+        shell: bash
+        run: |
+          npm install
+
+      - name: execute tests
+        id: executeTests
+        shell: bash
+        run: |
+          make test
