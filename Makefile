@@ -5,7 +5,15 @@ build:
 	npm run build
 
 test:
-	npm run test && npm run test:e2e
+	npm run test
+
+
+test-e2e:
+	npm run test:e2e
+	
+
+test-all: test test-e2e
+
 
 clean-build:
 	rm -rf ./dist && mkdir ./dist
