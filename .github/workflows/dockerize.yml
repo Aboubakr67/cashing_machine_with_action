@@ -1,0 +1,31 @@
+name: Make Docker image
+
+on: ["workflow_dispatch"]
+
+jobs:
+  make-docker:
+    name: build-and-push-image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        id: checkout
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.sha }}
+
+      - name: build-image
+        id: build-image
+        run: docker build -t Aboubakr67/cashing_machine_with_action:latest .
+
+      - name: push-image
+        id: push-image
+        run: |
+          docker login -u aboubakr67 -p ${{ secrets.DOCKER_HUB_TOKEN }}
+          docker push Aboubakr67/cashing_machine_with_action:latest
+
+      - name: add-summary
+        run: |
+          echo "🐳 Docker image pushed!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Pull:** \`docker pull Aboubakr67/cashing_machine_with_action:latest\`" >> $GITHUB_STEP_SUMMARY
