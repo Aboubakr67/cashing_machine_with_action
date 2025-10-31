@@ -34,14 +34,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Install dependencies
-        run: npm ci
-
       - name: install node modules
         id: installNodeModules
         shell: bash
         run: |
           npm install
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Run unit tests
         run: npm test
@@ -70,14 +70,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Install dependencies
-        run: npm ci
-
       - name: install node modules
         id: installNodeModules
         shell: bash
         run: |
           npm install
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Start MongoDB Memory Server & Run E2E tests
         run: |
