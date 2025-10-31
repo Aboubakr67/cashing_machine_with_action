@@ -53,6 +53,14 @@ app.post("/api/payment", async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.redirect("/payment");
+});
+
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok", message: "Server is running" });
+});
+
 app.get("/payment", (req, res) => {
   res.render("payment");
 });
