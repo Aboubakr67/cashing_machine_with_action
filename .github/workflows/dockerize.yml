@@ -22,7 +22,7 @@ jobs:
         id: push-image
         run: |
           docker login -u aboubakr67 -p ${{ secrets.DOCKER_HUB_TOKEN }}
-          docker push Aboubakr67/cashing_machine_with_action:latest
+          docker push aboubakr67/cashing_machine_with_action:latest
 
       - name: add-summary
         run: |
