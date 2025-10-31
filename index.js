@@ -72,7 +72,7 @@ app.get("/change", (req, res) => {
   try {
     if (data) changeToGive = JSON.parse(decodeURIComponent(data));
   } catch (e) {
-    console.error("Erreur parsing change data");
+    console.error("Erreur parsing change data ");
   }
 
   res.render("change", { changeToGive });
