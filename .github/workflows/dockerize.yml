@@ -16,7 +16,7 @@ jobs:
 
       - name: build-image
         id: build-image
-        run: docker build -t Aboubakr67/cashing_machine_with_action:latest .
+        run: docker build -t aboubakr67/cashing_machine_with_action:latest .
 
       - name: push-image
         id: push-image
@@ -28,4 +28,4 @@ jobs:
         run: |
           echo "🐳 Docker image pushed!" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Pull:** \`docker pull Aboubakr67/cashing_machine_with_action:latest\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Pull:** \`docker pull aboubakr67/cashing_machine_with_action:latest\`" >> $GITHUB_STEP_SUMMARY
